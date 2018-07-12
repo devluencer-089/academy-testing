@@ -7,8 +7,10 @@
     <groupId>com.senacor.academy.testing</groupId>
     <artifactId>testing</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>graph-ql-server</name>
-    <description>Demo server for GraphQL</description>
+
+
+    <name>academy testing</name>
+    <description>Testing for the brave and true</description>
 
     <properties>
         <java.version>1.8</java.version>
