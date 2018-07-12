@@ -1,8 +1,5 @@
-package com.senacor.testing.statevsbehaviorverification;
+package com.senacor.testing.state_vs_behavior_verification;
 
-import com.senacor.testing.statevsbehaviorverification.MailService;
-import com.senacor.testing.statevsbehaviorverification.Order;
-import com.senacor.testing.statevsbehaviorverification.Warehouse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

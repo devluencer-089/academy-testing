@@ -1,4 +1,4 @@
-package com.senacor.testing.statevsbehaviorverification;
+package com.senacor.testing.state_vs_behavior_verification;
 
 import java.util.HashMap;
 import java.util.Map;

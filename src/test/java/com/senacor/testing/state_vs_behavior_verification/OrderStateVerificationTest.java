@@ -1,4 +1,4 @@
-package com.senacor.testing.statevsbehaviorverification;
+package com.senacor.testing.state_vs_behavior_verification;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
