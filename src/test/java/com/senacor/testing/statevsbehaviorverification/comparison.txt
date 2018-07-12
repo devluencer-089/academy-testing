@@ -1,0 +1,6 @@
+                                Behaviour               State
+================================================================================
+Scope des Tests                 Order                   Order, Warehouse
+
+Example Refactoring:
+- Inline removeFromInventory    no change needed        change in test needed
