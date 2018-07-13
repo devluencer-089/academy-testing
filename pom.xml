@@ -197,6 +197,7 @@
                     <!-- List the classes you want to generate assertions for -->
                     <classes>
                         <param>com.senacor.testing.granularity.Poll</param>
+                        <param>com.senacor.testing.d_most_recently_used_list.MostRecentlyUsedList</param>
                     </classes>
 
                     <!-- If true, all files in targetDir are removed before generating new ones (default to false) -->

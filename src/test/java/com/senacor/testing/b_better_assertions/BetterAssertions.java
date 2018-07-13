@@ -4,7 +4,7 @@ import com.senacor.testing.granularity.Email;
 import com.senacor.testing.granularity.Poll;
 import com.senacor.testing.granularity.PollAssert;
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
@@ -27,14 +27,17 @@ public class BetterAssertions {
     }
 
     @Test
-    public void generateAssertionsWithTheMavenPlugin() {
+    public void generatedAssertJAssertionsWithTheMavenPlugin() {
         Poll sut = Poll.newBuilder()
+                .ownerId("me")
                 .participant("id1", Email.of("shared-email.com"))
                 .participant("id2", Email.of("shared-email.com"))
                 .build();
 
         PollAssert.assertThat(sut)
-                .hasOnlyParticipantEmails(Email.of("shared-email.com"));
+                .hasOnlyParticipantEmails(Email.of("shared-email.com"))
+                .hasOwnerId("me")
+                .hasNoPollOptions();
     }
 
     @Test
