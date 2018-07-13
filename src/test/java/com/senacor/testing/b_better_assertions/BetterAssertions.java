@@ -3,13 +3,11 @@ package com.senacor.testing.b_better_assertions;
 import com.senacor.testing.granularity.Email;
 import com.senacor.testing.granularity.Poll;
 import com.senacor.testing.granularity.PollAssert;
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.containsInAnyOrder;
 
 public class BetterAssertions {
 
@@ -49,7 +47,8 @@ public class BetterAssertions {
 
         Set<Email> emails = sut.getParticipantEmails();
 
-        Assert.assertThat(emails, containsInAnyOrder(Email.of("1@1.com"), Email.of("2@2.com")));
+        //removed compile dependency to hamcrest
+//        assertThat(emails, containsInAnyOrder(Email.of("1@1.com"), Email.of("2@2.com")));
     }
 
 }

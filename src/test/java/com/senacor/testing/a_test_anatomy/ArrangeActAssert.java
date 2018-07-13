@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.internal.util.collections.Sets.newSet;
 
 public class ArrangeActAssert {
@@ -24,7 +24,7 @@ public class ArrangeActAssert {
         int count = sut.getParticipantCount();
 
         //assert
-        assertEquals("sut has 2 participants", 2, count);
+        assertEquals(2, count);
     }
 
 
@@ -37,10 +37,10 @@ public class ArrangeActAssert {
                 .build();
 
         //1st assertion
-        assertEquals("Poll has 2 participants", 2, sut.getParticipantCount());
+        assertEquals(2, sut.getParticipantCount());
 
         //2nd completely unrelated assertion
-        assertEquals("Poll has 2 participant emails ", 2, sut.getParticipantEmails().size());
+        assertEquals(2, sut.getParticipantEmails().size());
     }
 
     @Test
@@ -53,7 +53,7 @@ public class ArrangeActAssert {
         Set<Email> emails = sut.getParticipantEmails();
         
         //1st physical assertion
-        assertEquals("Poll has a shared participant email", 1, emails.size());
+        assertEquals(1, emails.size());
         //2nd physical assertion
         assertEquals(newSet(Email.of("shared-email.com")), emails);
     }
