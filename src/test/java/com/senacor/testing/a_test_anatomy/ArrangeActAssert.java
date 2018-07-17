@@ -1,7 +1,7 @@
 package com.senacor.testing.a_test_anatomy;
 
-import com.senacor.testing.granularity.Email;
-import com.senacor.testing.granularity.Poll;
+import com.senacor.testing.Email;
+import com.senacor.testing.Poll;
 import org.junit.jupiter.api.Test;
 
 import java.util.Set;

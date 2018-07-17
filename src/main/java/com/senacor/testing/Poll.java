@@ -1,6 +1,5 @@
-package com.senacor.testing.granularity;
+package com.senacor.testing;
 
-import com.senacor.testing.GUID;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -30,14 +29,17 @@ public class Poll {
     @Indexed
     private final List<Participant> participants;
 
+    private final boolean closed;
+
 
     @PersistenceConstructor
-    Poll(String id, String ownerId, String topic, List<PollOption> pollOptions, List<Participant> participants) {
+    Poll(String id, String ownerId, String topic, List<PollOption> pollOptions, List<Participant> participants, boolean closed) {
         this.id = id;
         this.ownerId = ownerId;
         this.topic = topic;
         this.pollOptions = pollOptions;
         this.participants = participants;
+        this.closed = closed;
     }
 
     private Poll(Builder builder) {
@@ -46,6 +48,7 @@ public class Poll {
         topic = builder.topic;
         pollOptions = builder.pollOptions;
         participants = builder.participants;
+        closed = builder.closed;
     }
 
     public static Builder newBuilder() {
@@ -59,6 +62,7 @@ public class Poll {
         builder.topic = copy.getTopic();
         builder.pollOptions = copy.getPollOptions();
         builder.participants = copy.getParticipants();
+        builder.closed = copy.isClosed();
         return builder;
     }
 
@@ -84,6 +88,10 @@ public class Poll {
 
     public List<PollOption> getPollOptions() {
         return pollOptions;
+    }
+
+    public boolean isClosed() {
+        return closed;
     }
 
 
@@ -113,6 +121,7 @@ public class Poll {
         private String topic;
         private List<PollOption> pollOptions = new ArrayList<>();
         private List<Participant> participants = new ArrayList<>();
+        private boolean closed;
 
         private Builder() {
         }
@@ -129,6 +138,11 @@ public class Poll {
 
         public Builder topic(String topic) {
             this.topic = topic;
+            return this;
+        }
+
+        public Builder closed(boolean closed) {
+            this.closed = closed;
             return this;
         }
 

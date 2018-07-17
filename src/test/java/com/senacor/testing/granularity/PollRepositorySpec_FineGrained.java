@@ -2,6 +2,8 @@ package com.senacor.testing.granularity;
 
 
 import com.senacor.testing.Application;
+import com.senacor.testing.Poll;
+import com.senacor.testing.PollRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
@@ -12,7 +14,8 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import java.util.List;
 
-import static com.senacor.testing.granularity.Poll.newBuilder;
+import static com.senacor.testing.Assertions.assertThat;
+import static com.senacor.testing.Poll.newBuilder;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringJUnitConfig(Application.class)
@@ -44,7 +47,7 @@ class PollRepositorySpec_FineGrained {
 
             assertThat(polls).hasSize(1)
                     .first()
-                    .satisfies(singlePoll -> PollAssert.assertThat(singlePoll).hasOwnerId("me"));
+                    .satisfies(singlePoll -> assertThat(singlePoll).hasOwnerId("me"));
         }
 
         @Test
@@ -59,7 +62,7 @@ class PollRepositorySpec_FineGrained {
 
             assertThat(polls).hasSize(1)
                     .first()
-                    .satisfies(singlePoll -> PollAssert.assertThat(singlePoll).hasId(poll.getId()));
+                    .satisfies(singlePoll -> assertThat(singlePoll).hasId(poll.getId()));
         }
 
         @Test

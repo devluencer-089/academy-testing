@@ -2,6 +2,8 @@ package com.senacor.testing.granularity;
 
 
 import com.senacor.testing.Application;
+import com.senacor.testing.Poll;
+import com.senacor.testing.PollRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

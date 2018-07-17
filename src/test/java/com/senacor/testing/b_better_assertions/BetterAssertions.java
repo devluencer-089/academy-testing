@@ -1,8 +1,8 @@
 package com.senacor.testing.b_better_assertions;
 
-import com.senacor.testing.granularity.Email;
-import com.senacor.testing.granularity.Poll;
-import com.senacor.testing.granularity.PollAssert;
+import com.senacor.testing.Email;
+import com.senacor.testing.Poll;
+import com.senacor.testing.PollAssert;
 import org.junit.jupiter.api.Test;
 
 import java.util.Set;

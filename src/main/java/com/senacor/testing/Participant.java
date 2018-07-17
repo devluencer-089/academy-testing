@@ -1,4 +1,4 @@
-package com.senacor.testing.granularity;
+package com.senacor.testing;
 
 public class Participant {
 

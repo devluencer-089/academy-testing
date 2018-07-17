@@ -1,4 +1,4 @@
-package com.senacor.testing.granularity;
+package com.senacor.testing;
 
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
