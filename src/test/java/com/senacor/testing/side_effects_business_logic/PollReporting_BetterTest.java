@@ -35,7 +35,7 @@ class PollReporting_BetterTest {
         void itAppliesExclusionPolicyBeforeWriting() {
             List<Poll> polls = new ArrayList<>();
             List<Poll> filteredPolls = new ArrayList<>();
-            
+
             ExclusionPolicy policy = mock(ExclusionPolicy.class);
             when(policy.apply(polls)).thenReturn(filteredPolls);
 
@@ -43,7 +43,6 @@ class PollReporting_BetterTest {
 
             verify(policy).apply(polls);
             verify(fileSystem).write(filteredPolls);
-
         }
 
     }
