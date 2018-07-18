@@ -1,5 +1,6 @@
 package com.senacor.testing;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -12,6 +13,7 @@ import java.util.Optional;
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 
 @Component
+@Profile("!test")
 public class PollRepository {
 
     public static final String COLLECTION_NAME = "documents";

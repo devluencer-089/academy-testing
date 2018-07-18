@@ -8,10 +8,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
+import javax.inject.Inject;
 import java.util.List;
 
 import static com.senacor.testing.Assertions.assertThat;
@@ -19,10 +18,9 @@ import static com.senacor.testing.Poll.newBuilder;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringJUnitConfig(Application.class)
-@ActiveProfiles("test")
 class PollRepositorySpec_FineGrained {
 
-    @Autowired
+    @Inject
     PollRepository sut;
 
     @BeforeEach
