@@ -13,11 +13,11 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
  */
 public class MostRecentlyUsedListSpec {
 
-    MostRecentlyUsedListImpl sut;
+    MostRecentlyUsedListExample sut;
 
     @BeforeEach
     void setUp() {
-        sut = new MostRecentlyUsedListImpl();
+        sut = new MostRecentlyUsedListExample();
     }
 
     @Nested
@@ -30,7 +30,7 @@ public class MostRecentlyUsedListSpec {
 
         @Test
         void itAcceptsARecentlyUsedElement() {
-            MostRecentlyUsedListImpl sut = new MostRecentlyUsedListImpl();
+            MostRecentlyUsedListExample sut = new MostRecentlyUsedListExample();
 
             sut.add(new Object());
 
@@ -43,7 +43,7 @@ public class MostRecentlyUsedListSpec {
 
         @BeforeEach
         public void createWithMaxCapacity() {
-            sut = new MostRecentlyUsedListImpl(1);
+            sut = new MostRecentlyUsedListExample(1);
         }
 
         @Test

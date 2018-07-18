@@ -33,5 +33,6 @@ class HowToNameASpec {
     @Test
     public void itCalculatesTheSumOfTwoLongValues() {
         //specific and decisive wording: a specification
+        //note that it is also concise
     }
 }

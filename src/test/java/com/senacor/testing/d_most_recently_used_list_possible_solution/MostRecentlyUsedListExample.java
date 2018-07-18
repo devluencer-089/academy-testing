@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MostRecentlyUsedListImpl implements MostRecentlyUsedList {
+public class MostRecentlyUsedListExample implements MostRecentlyUsedList {
 
     private static int UNBOUND = Integer.MAX_VALUE;
 
@@ -16,11 +16,11 @@ public class MostRecentlyUsedListImpl implements MostRecentlyUsedList {
 
     private LinkedList<Object> recentlyUsedItems = Lists.newLinkedList();
 
-    MostRecentlyUsedListImpl() {
+    MostRecentlyUsedListExample() {
         this(UNBOUND);
     }
 
-    MostRecentlyUsedListImpl(int capacity) {
+    MostRecentlyUsedListExample(int capacity) {
         this.capacity = capacity;
     }
 
