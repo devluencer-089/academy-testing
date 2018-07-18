@@ -7,20 +7,18 @@ import com.senacor.testing.PollRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
+import javax.inject.Inject;
 import java.util.List;
 
 import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringJUnitConfig(Application.class)
-@ActiveProfiles("test")
 class PollRepositorySpec_CoarseGrained {
 
-    @Autowired
+    @Inject
     PollRepository sut;
 
     @BeforeEach
