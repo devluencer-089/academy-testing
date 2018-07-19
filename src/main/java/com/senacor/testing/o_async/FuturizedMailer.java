@@ -27,7 +27,6 @@ public class FuturizedMailer {
 
     Future<Invitation> sendInvitation(String pollId, Email participantEmail) {
         return executor.submit(() -> {
-            emailGateway.connect();
             logger.info("email is send on thread {}", Thread.currentThread().getName());
             Invitation invitation = new Invitation(pollId, participantEmail);
             emailGateway.enqueue(invitation);
