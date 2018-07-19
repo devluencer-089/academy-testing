@@ -27,6 +27,7 @@ public class Mailer {
         this.executor = executor;
     }
 
+    //async
     void sendInvitation(String pollId, Email participantEmail) {
         logger.info("method is entered on thread {}", Thread.currentThread().getName());
         executor.execute(() -> {
@@ -34,5 +35,10 @@ public class Mailer {
             emailGateway.enqueue(new Invitation(pollId, participantEmail));
         });
         logger.info("method is exited on thread {}", Thread.currentThread().getName());
+    }
+
+    //sync
+    public void send(String message, Email emailAddress) {
+
     }
 }
