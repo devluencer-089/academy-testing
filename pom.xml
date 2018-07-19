@@ -197,6 +197,12 @@
                         <version>${junit-jupiter.version}</version>
                     </dependency>
                 </dependencies>
+                <configuration>
+                    <includes>
+                        <include>*Spec.java</include>
+                        <include>*Test.java</include>
+                    </includes>
+                </configuration>
             </plugin>
 
             <plugin>
