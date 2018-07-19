@@ -6,8 +6,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Profile;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
@@ -63,27 +61,4 @@ class MailerIntegrationTest_Polling {
         assertThat(emailGateway.getCount()).isEqualTo(3);
     }
 
-    @Bean
-    @Profile("test")
-    EmailGatewaySpy emailGatewaySpy() {
-        return new EmailGatewaySpy();
-    }
-
-    static class EmailGatewaySpy extends EmailGateway {
-
-        private int count;
-
-        @Override
-        void enqueue(Invitation invitation) {
-            count++;
-        }
-
-        public int getCount() {
-            return count;
-        }
-
-        void reset() {
-            count = 0;
-        }
-    }
 }
