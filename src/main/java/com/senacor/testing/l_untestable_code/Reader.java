@@ -10,7 +10,7 @@ import java.security.cert.CertificateEncodingException;
 import java.security.cert.CertificateException;
 
 public class Reader {
-    public static Certificate read(SyncerConfig config) {
+    public static Certificate read(Credentials config) {
         return new Certificate("default") {
             @Override
             public byte[] getEncoded() throws CertificateEncodingException {

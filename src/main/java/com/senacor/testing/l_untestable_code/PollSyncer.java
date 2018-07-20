@@ -1,38 +1,38 @@
 package com.senacor.testing.l_untestable_code;
 
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+
+import java.time.Duration;
 import java.time.Instant;
-import java.util.stream.Stream;
+import java.util.List;
+import java.util.stream.Collectors;
 
+@Component
+@RequiredArgsConstructor
 public class PollSyncer {
-    private static final PollSyncer instance = new PollSyncer(SyncerConfig.getInstance());
 
-    public static PollSyncer getInstance() {
-        return instance;
+    private final Inbox inbox;
+    private final SMTPConnector connector;
+
+    public void syncForThePast(Duration duration) {
+            List<Message> messages = getMessages();
+
+            Instant syncFrom = Instant.now().minus(duration);
+
+            // yo heard you like side effects
+            messages.stream()
+                .filter(message -> message.getTimestamp().isAfter(syncFrom))
+                .forEach(inbox::add);
     }
 
-    private final String username;
-    private final String password;
-
-
-    private PollSyncer(SyncerConfig config) {
-        this.username = config.getUsername();
-        this.password = config.getPassword();
-    }
-
-    public void sync() {
-        Inbox inbox = Inbox.get(username, password);
-        SMTPConnector connector = new SMTPConnector(username, password);
-        connector.connect();
+    private List<Message> getMessages() {
         try {
-
-            Stream<Message> polls = connector.messageStream();
-
-            Instant syncFrom = Instant.now().minus(Defaults.INBOX_SYNC_DURATION);
-            polls
-                    .filter(message -> message.getTimestamp().isAfter(syncFrom))
-                    .forEach(message -> inbox.add(message));
-
+            connector.connect();
+            return connector
+                    .messageStream()
+                    .collect(Collectors.toList());
         } finally {
             connector.disconnect();
         }

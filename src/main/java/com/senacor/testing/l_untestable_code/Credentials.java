@@ -1,15 +1,10 @@
 package com.senacor.testing.l_untestable_code;
 
-public class SyncerConfig {
-    private static final SyncerConfig INSTANCE = new SyncerConfig();
+import org.springframework.stereotype.Component;
 
-    public static SyncerConfig getInstance() {
-        return INSTANCE;
-    }
-
-    private SyncerConfig() {
-
-    }
+@Component
+//was SyncerConfig
+public class Credentials {
 
     public static String get(String property) {
         //read from config store
