@@ -37,7 +37,7 @@ class PollSyncerTest {
     }
 
     @Test
-    public void itSyncsTheInboxWithNewMessages() {
+    public void itAddsNewMessagesInTheInbox() {
         BetterPollSyncer sut = new BetterPollSyncer(inbox, smtpConnector, Duration.of(30, SECONDS), clock);
         when(clock.instant()).thenReturn(firstMessageTimestamp.plus(25, SECONDS));
         when(smtpConnector.messageStream()).thenReturn(firstChunkMessageStream(firstMessageTimestamp));
@@ -48,7 +48,7 @@ class PollSyncerTest {
     }
 
     @Test
-    public void itDoesNotSyncMessagesWhichWereSyncedBefore() {
+    public void itDoesNotAddMessagesAgainWhichWereSyncedBefore() {
         BetterPollSyncer sut = new BetterPollSyncer(inbox, smtpConnector, Duration.of(30, SECONDS), clock);
         when(clock.instant()).thenReturn(firstMessageTimestamp.plus(60, SECONDS));
         when(smtpConnector.messageStream()).thenReturn(firstChunkMessageStream(firstMessageTimestamp));
@@ -59,7 +59,7 @@ class PollSyncerTest {
     }
 
     @Test
-    public void itSyncsTheNewMessagesWhenItSyncsInALoop() {
+    public void itAddsTheNewMessagesWhenItSyncsInALoop() {
         BetterPollSyncer sut = new BetterPollSyncer(inbox, smtpConnector, Duration.of(30, SECONDS), clock);
         when(clock.instant()).thenReturn(firstMessageTimestamp.plus(25, SECONDS), firstMessageTimestamp.plus(55, SECONDS));
         when(smtpConnector.messageStream()).thenReturn(firstChunkMessageStream(firstMessageTimestamp), aMessageStream(firstMessageTimestamp));
@@ -68,6 +68,17 @@ class PollSyncerTest {
         sut.sync();
 
         verify(inbox, times(4)).add(any());
+    }
+
+    @Test
+    public void itAddsNowMessagesFromAnEmptyInputList() {
+        BetterPollSyncer sut = new BetterPollSyncer(inbox, smtpConnector, Duration.of(30, SECONDS), clock);
+        when(clock.instant()).thenReturn(firstMessageTimestamp.plus(25, SECONDS));
+        when(smtpConnector.messageStream()).thenReturn(Stream.empty());
+
+        sut.sync();
+
+        verify(inbox, never()).add(any());
     }
 
     private Stream<Message> firstChunkMessageStream(Instant startTimestamp) {
