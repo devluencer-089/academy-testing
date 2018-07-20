@@ -1,12 +1,12 @@
 package com.senacor.testing.l_untestable_code;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.test.mock.mockito.MockReset;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -15,25 +15,21 @@ import java.util.stream.Stream;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-@ExtendWith(MockitoExtension.class)
-class PollSyncerTest {
+@ExtendWith(SpringExtension.class)
+@SpringBootTest
+class PollSyncerSpringBootTest {
 
     @Autowired
     private PollSyncer sut;
 
-    @Mock
+    @MockBean(reset = MockReset.BEFORE)
     private Inbox inbox;
 
-    @Mock
+    @MockBean(reset = MockReset.BEFORE)
     private SMTPConnector smptConnector;
 
-    @BeforeEach
-    void provideInboxAndConnector() {
-        sut = new PollSyncer(inbox, smptConnector);
-    }
-
-    @Nested
-    class WhenThereAreMessages {
+//    @Nested
+//    class WhenThereAreMessages {
 
         @Test
         void syncingWithinTheTimePeriodUpdatesTheInbox() {
@@ -77,10 +73,10 @@ class PollSyncerTest {
             verify(inbox, never()).add(any());
         }
 
-    }
+//    }
 
-    @Nested
-    class WhenThereAreNoMessages {
+//    @Nested
+//    class WhenThereAreNoMessages {
 
         @Test
         void syncingDoesNotUpdateTheInbox() {
@@ -91,6 +87,6 @@ class PollSyncerTest {
             verify(inbox, never()).add(any());
         }
 
-    }
+//    }
 
 }
