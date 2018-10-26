@@ -46,14 +46,14 @@ class PollNotifierTest {
                 .participant("1", Email.of("paul@gmail.com"))
                 .build();
 
-        String messagae = "hi 👋";
+        String message = "hi 👋";
 
         when(repositoy.findPoll(anyString())).thenReturn(Optional.of(poll));
 
-        sut.mailParticipants("1", messagae);
+        sut.mailParticipants("1", message);
 
         ArgumentCaptor<Email> messageCaptor = ArgumentCaptor.forClass(Email.class);
-        verify(mailer, times(2)).send(eq(messagae), messageCaptor.capture());
+        verify(mailer, times(2)).send(eq(message), messageCaptor.capture());
         assertThat(messageCaptor.getAllValues()).containsOnly(
                 hans,
                 paul);
