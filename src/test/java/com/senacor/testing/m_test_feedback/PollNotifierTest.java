@@ -52,9 +52,9 @@ class PollNotifierTest {
 
         sut.mailParticipants("1", message);
 
-        ArgumentCaptor<Email> messageCaptor = ArgumentCaptor.forClass(Email.class);
-        verify(mailer, times(2)).send(eq(message), messageCaptor.capture());
-        assertThat(messageCaptor.getAllValues()).containsOnly(
+        ArgumentCaptor<Email> emailCaptor = ArgumentCaptor.forClass(Email.class);
+        verify(mailer, times(2)).send(eq(message), emailCaptor.capture());
+        assertThat(emailCaptor.getAllValues()).containsOnly(
                 hans,
                 paul);
     }
